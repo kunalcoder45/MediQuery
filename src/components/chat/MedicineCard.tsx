@@ -22,6 +22,7 @@ interface MedicineCardProps {
 }
 
 interface ApiResponse {
+  data: any;
   stores: Pharmacy[];
   location?: { name: string; lat: number; lon: number };
   total?: number;
@@ -82,11 +83,12 @@ export function MedicineCard({ suggestion }: MedicineCardProps) {
         throw new Error(data.error || `Request failed with status ${res.status}`);
       }
 
-      setPharmacies(data.stores || []);
+      // New code:
+      setPharmacies(data.data?.stores || []);
       setSearchInfo({
-        location: data.location?.name || loc,
-        total: data.total || data.stores?.length || 0,
-        radius: data.radius || searchRadius,
+        location: data.data?.location?.name || loc,
+        total: data.data?.searchParams?.total || 0,
+        radius: data.data?.searchParams?.radius || searchRadius
       });
 
       if (data.message && data.stores.length === 0) {
