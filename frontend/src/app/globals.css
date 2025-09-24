@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    /* #ffffff */
+    --foreground: 0 0% 20%;
+    /* #333333 */
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 20%;
+
+    --primary: 123 45% 75%;
+    /* #a3d9a5 light green */
+    --primary-foreground: 0 0% 10%;
+    /* Dark text on light green */
+
+    --secondary: 145 50% 92%;
+    /* #e0f2e9 pale green */
+    --secondary-foreground: 0 0% 20%;
+    /* Dark text on pale green */
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --accent: 123 45% 70%;
+    /* Slightly darker/more saturated green for accents */
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 94%;
+    /* Lighter input background */
+    --ring: 123 45% 65%;
+    /* Green for focus rings */
+
+    --radius: 0.5rem;
+
+    /* Chart colors (can be adjusted if charts are used) */
+    --chart-1: 123 45% 75%;
+    --chart-2: 123 40% 65%;
+    --chart-3: 123 35% 55%;
+    --chart-4: 123 30% 45%;
+    --chart-5: 123 25% 35%;
+
+    /* Sidebar specific colors - not used in this app, but kept for consistency if shadcn/ui sidebar is added later */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 123 45% 75%;
+    --primary-foreground: 0 0% 10%;
+
+    --secondary: 145 30% 25%;
+    /* Darker pale green for dark mode */
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 123 45% 70%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 123 45% 55%;
+
+    --chart-1: 123 45% 75%;
+    --chart-2: 123 40% 65%;
+    --chart-3: 123 35% 55%;
+    --chart-4: 123 30% 45%;
+    --chart-5: 123 25% 35%;
+
+    /* Sidebar specific colors - dark theme */
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    /* Removed font-family: Arial, Helvetica, sans-serif; to allow Next/Font to work */
+  }
+}
+
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, and Opera */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 10px;
+  /* This sets the width of the entire scrollbar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #ebeaea;
+  border-radius: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #5e24ff;
+  /* This is the color of the draggable part of the scrollbar */
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+@keyframes ping-slow {
+
+  0%,
+  100% {
+    transform: scale(0.3);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 0.1;
+  }
+}
+
+@keyframes ping-medium {
+
+  0%,
+  100% {
+    transform: scale(0.4);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 0.15;
+  }
+}
+
+@keyframes ping-fast {
+
+  0%,
+  100% {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+}
+
+.animate-ping-slow {
+  animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animate-ping-medium {
+  animation: ping-medium 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+  animation-delay: 0.2s;
+}
+
+.animate-ping-fast {
+  animation: ping-fast 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  animation-delay: 0.4s;
+}
+
+
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap'); */
+
+.fonting {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+
+@keyframes animate-con {
+  0% { opacity: 0; }
+  33.3% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes animate-one {
+  0% { opacity: 0; transform: translate(-1500px, -1000px); }
+  70% { opacity: 0; }
+  100% { transform: translate(0, 0); opacity: 1; }
+}
+@keyframes animate-two {
+  0% { opacity: 0; transform: translate(100px, 1050px); }
+  70% { opacity: 0; }
+  100% { transform: translate(0, 0); opacity: 1; }
+}
+@keyframes animate-three {
+  0% { opacity: 0; transform: translateY(-1000px); }
+  70% { opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes animate-four {
+  0% { opacity: 0; transform: translate(-1500px, 1000px); }
+  70% { opacity: 0; }
+  100% { transform: translate(0, 0); opacity: 1; }
+}
+@keyframes animate-five {
+  0% { opacity: 0; }
+  70% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.animate-one { animation: animate-one 1.5s ease-out forwards; }
+.animate-two { animation: animate-two 1.5s ease-out forwards; }
+.animate-three { animation: animate-three 1.5s ease-out forwards; }
+.animate-four { animation: animate-four 1.5s ease-out forwards; }
+.animate-five { animation: animate-five 1.5s ease-out forwards; }
+.animate-con { animation: animate-con 5.5s ease-out forwards; }
